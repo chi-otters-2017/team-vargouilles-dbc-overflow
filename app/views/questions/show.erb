@@ -18,7 +18,24 @@
 
 <ul>
   <% @question.answers.each do |answer| %>
-    <li><%= answer.response %></li>
+    <li>
+      <span class="answer"><%= answer.response %><br>
+        <% if answer.comments %>
+        <h5>comments</h5>
+        <div class="answer-comments">
+          <%answer.comments.each do |comment|%>
+            <span class="comment nested">
+              <%= comment.body %>
+            </span>
+          <%end%>
+        </div>
+        <% end %>
+      <form method="get" action="/questions/new" class="answer-button">
+        <input class="no-js-button" type="submit" value="comment">
+      </form>
+      <br>
+
+    </li>
   <% end %>
 </ul>
 

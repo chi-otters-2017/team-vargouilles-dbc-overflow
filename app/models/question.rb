@@ -5,4 +5,8 @@ class Question < ActiveRecord::Base
   has_many :votes, :as => :votable
   has_many :answers
 
+  def comments
+    Comment.where(commentable_type: 'Question', commentable_id: id )
+  end
+
 end
