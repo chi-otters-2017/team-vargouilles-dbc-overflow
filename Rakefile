@@ -85,7 +85,12 @@ end
 
 namespace :db do
   desc "Drop, create, and migrate the database"
-  task :reset => [:drop, :create, :migrate]
+  task :reset => [:silly, :drop, :create, :migrate]
+
+  desc "silly print"
+  task :silly do
+    print "\n\n          ヽ(⌐■_■)ﾉ\n🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊[__YOLO__]🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊\n"
+  end
 
   desc "Create the databases at #{DB_NAME}"
   task :create do
