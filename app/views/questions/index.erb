@@ -1,0 +1,15 @@
+<% if @questions %>
+  <% @questions.each do |question| %>
+    <article class="question">
+      <h4><%= question.title %></h4><br>
+      <span class="content"><%= question.content %></span>
+    <!--PUT THE REST HERE-->
+    </article>
+  <% end %>
+<% end %>
+
+<% if session[:user_id] %>
+  <form method="get" action="/questions/new" class="inline">
+      <input class="no-js-button" type="submit" value="New Question">
+  </form>
+<% end %>
