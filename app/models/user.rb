@@ -1,6 +1,6 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
-  validates :email, :username, {presence: true}
+  validates :email, :name, {presence: true}
   include BCrypt
 
   def password
