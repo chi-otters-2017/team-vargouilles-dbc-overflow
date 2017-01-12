@@ -1,7 +1,7 @@
 <% if @questions %>
   <% @questions.each do |question| %>
     <article class="question">
-      <h4><%= question.title %></h4><br>
+      <h4><a href="/questions/<%= question.id %>"><%= question.title %></a></h4><br>
       <span class="content"><%= question.content %></span>
     <!--PUT THE REST HERE-->
     </article>
