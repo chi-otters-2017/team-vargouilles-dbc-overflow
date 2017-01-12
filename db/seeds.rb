@@ -1,8 +1,9 @@
 require 'faker'
 40.times do
   username_suffix = ["xxx", "69", "Slayer", "Shadow"]
+  firstname = Faker::Lorem.word
   user_info = {
-    name: Faker::Lorem.word.concat(" #{username_suffix.sample}"),
+    name: firstname.concat("#{username_suffix.sample}"),
     email: Faker::Internet.email,
     password: "password"
   }
@@ -28,3 +29,12 @@ end
   Answer.create(answer_info)
 end
 
+100.times do
+  comment_info = {
+    body: Faker::TwinPeaks.quote,
+    commentor_id: (1..40).to_a.sample,
+    commentable_id: (1..10).to_a.sample,
+    commentable_type: ['Question', 'Answer'].sample
+  }
+  Comment.create(comment_info)
+end
