@@ -17,3 +17,7 @@ post '/questions/:id/answers' do
     erb :"/answers/_new"
   end
 end
+
+get '/questions/:id/comments/new' do
+  erb :"comments/_new"
+end

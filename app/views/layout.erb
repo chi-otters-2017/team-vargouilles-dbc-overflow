@@ -20,7 +20,7 @@
 <body>
   <header role="banner" id="main-header" class="">
     <nav class="">
-  <% if @sessions[:user_id] %>
+  <% if session[:user_id] %>
     <%=erb(:'./users/_logged-in') %>
   <% else %>
     <%=erb(:'./users/_logged-out') %>
