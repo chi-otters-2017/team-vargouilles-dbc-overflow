@@ -1,8 +1,47 @@
 $(document).ready(function() {
-  $("div.create-new-answer")
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $("#question-button").on("submit", function(e){
+    e.preventDefault();
+    $("#question-button").addClass('hidden');
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    var url = $(this).attr('action');
+    var method = $(this).attr('method');
+
+    $.ajax({
+      url: url,
+      type: method
+    })
+    .done(function(response) {
+      $(".container").append(response);
+    });
+    // .always(function() {
+    // });
+  });
+
+  $("#index-box").on("submit", "#new-question-input", function(e){
+    e.preventDefault();
+
+    var $form = $("#new-question-input");
+    var url = $form.attr('action');
+    var method = $form.attr('method');
+    var data = $form.serialize();
+
+    $(this).trigger('reset');
+    $("#new-question-form-wrapper").addClass('hidden');
+    $("#question-button").removeClass('hidden');
+
+    $.ajax({
+      url: url,
+      type: method,
+      data: data
+    })
+    .done(function(response) {
+      $(".question-container").append(response);
+    });
+    // .fail(function() {
+    //   console.log("error");
+    // })
+   // .always(function() {
+   //    $("#new-question-input").reset();
+   //  });
+  });
 });

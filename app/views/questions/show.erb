@@ -15,10 +15,10 @@
       <% end %>
     </ul>
   <% end %><br>
-  <%=erb(:'comments/_new') %>
+  <%=erb(:'/comments/_new') %>
 </div>
 
-<div><%=erb(:'answers/_new') %></div>
+<div><%=erb(:'/answers/_new') %></div>
 
 <ul>
   <% @question.answers.each do |answer| %>
