@@ -17,15 +17,15 @@ post '/questions' do
   end
 end
 
-get '/questions/:id' do
-  @question = Question.find_by(id: params[:id])
-  @comments = @question.comments
-  erb :'/questions/show'
+get '/questions/:id/comments/new' do
+  @commentable = Question.find(params[:id])
+  erb :"comments/_new"
 end
 
-get '/questions/:id/comments/new' do
-  @commentable = Question.find(id: params[:id])
-  erb :"comments/_new"
+get '/questions/:id' do
+  @question = Question.find(params[:id])
+  @comments = @question.comments
+  erb :'/questions/show'
 end
 
 post '/questions/:id/comments' do
