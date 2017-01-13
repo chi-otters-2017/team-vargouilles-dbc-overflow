@@ -1,7 +1,13 @@
 <div id="new-comment-form" class="container">
     <h1>New Comment!</h1>
-  <form method="post" action="/comment">
-      <textarea id="comment-content" name="comment[body]" rows="3" cols="40"></textarea>
+  <% if !@commentable && @answer%>
+    <% @commentable = @answer %>
+  <% elsif !@commentable && @question %>
+    <% @commentable = @question%>
+  <% end %>
+
+  <form method="post" action="/<%=@commentable.plural_model_name%>/<%=@commentable.id%>/comments">
+      <textarea id="comment-content" name="body" rows="2" cols="40"></textarea>
       <input type="submit" value="comment">
   </form>
 </div>

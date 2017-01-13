@@ -1,4 +1,7 @@
+require_relative '../helpers/post_parser'
 class Answer < ActiveRecord::Base
+  include PostParser
+
   # Remember to create a migration!
   belongs_to :question
 
@@ -7,15 +10,12 @@ class Answer < ActiveRecord::Base
   has_many :votes, :as => :votable
   has_many :comments, as: :commentable
 
-  def total_votes
-    total = 0
-    answer.votes.each do |vote|
-      total+= vote.value
-    end
-  end
-
-  def comments
-    Comment.where(commentable_type: 'Answer', commentable_id: id)
-  end
-
+#PostParser adds
+#==================
+# plural_model_name
+# => returns the model name lowercase and plural for general routes
+# total_votes
+#=> returns vote count
+# comments
+#=> returns owned comments
 end

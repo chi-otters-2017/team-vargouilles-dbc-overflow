@@ -23,3 +23,26 @@ get '/questions/:id' do
   erb :'/questions/show'
 end
 
+get '/questions/:id/comments/new' do
+  @commentable = Question.find(id: params[:id])
+  erb :"comments/_new"
+end
+
+post '/questions/:id/comments' do
+  comment_info = {
+    body: params[:body],
+    commentor_id: session[:user_id],
+    commentable_id: params[:id],
+    commentable_type: 'Question'
+
+  }
+
+  comment = Comment.new(comment_info)
+  if comment.save
+    redirect "/questions/#{params[:id]}"
+  else
+    @errors = comment.errors.full_messages
+    @question = Question.find_by(id: params[:id])
+    erb :'/questions/show'
+  end
+end

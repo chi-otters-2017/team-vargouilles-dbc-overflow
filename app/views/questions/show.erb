@@ -23,14 +23,14 @@
         <% if answer.comments %>
         <h5>comments</h5>
         <div class="answer-comments">
-          <%answer.comments.each do |comment|%>
+          <%answer.comments.each do |comment|%><br>
             <span class="comment nested">
               <%= comment.body %>
             </span>
           <%end%>
         </div>
         <% end %>
-      <form method="get" action="/questions/new" class="answer-button">
+      <form method="get" action="/questions/<%=@question.id%>/comments/new" class="comment-button">
         <input class="no-js-button" type="submit" value="comment">
       </form>
       <br>
