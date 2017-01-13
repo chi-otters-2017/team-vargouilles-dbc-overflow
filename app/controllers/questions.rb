@@ -19,7 +19,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
-  @comments = @question
+  @comments = @question.comments
   erb :'/questions/show'
 end
 
