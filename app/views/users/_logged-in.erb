@@ -1,6 +1,8 @@
 <ul class="nav-links">
-  <li><a href="/comments">Home</a></li>
-  <li><a href="/users/<%=session[:user_id]%>">Profile</a></li>
+
+  <li><a href="/questions">Home</a></li>
+  <li><a href="/users/#{session[:user_id]}">Profile</a></li>
+
   <li>
     <form action="/sessions" method="post">
       <input type="hidden" name="_method" value="delete">

@@ -14,4 +14,8 @@ class Answer < ActiveRecord::Base
     end
   end
 
+  def comments
+    Comment.where(commentable_type: 'Answer', commentable_id: id)
+  end
+
 end
