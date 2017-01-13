@@ -4,15 +4,23 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  erb :'/questions/_new'
+  if request.xhr?
+    erb :'/questions/_new', layout: false
+  else
+    erb :'questions/_new'
+  end
 end
 
 post '/questions' do
-  question = Question.new(params[:question], author_id: session[:user_id])
-  if question.save
-    redirect "/questions/#{question.id}"
+  @question = Question.new(title: params[:title], content: params[:content], author_id: session[:user_id])
+  if @question.save
+    if request.xhr?
+      erb :"/questions/_question", layout: false, locals: {question: @question}
+    else
+      redirect "/questions"
+    end
   else
-    @errors = question.errors.full_messages
+    @errors = @question.errors.full_messages
     erb :'/questions/_new'
   end
 end

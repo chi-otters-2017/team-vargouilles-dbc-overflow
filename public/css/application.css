@@ -3,6 +3,15 @@ div {
   margin: 0 auto;
 }
 
-ul{
+ul {
   list-style-type: none;
+}
+
+#title{
+  border-style: solid;
+  margin: 20px 20px 20px 20px;
+}
+
+.hidden {
+  display: none;
 }

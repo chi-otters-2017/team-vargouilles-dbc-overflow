@@ -1,19 +1,17 @@
-<div class="container">
-<% if @questions %>
-  <% @questions.each do |question| %>
-    <article class="question">
-
-
-      <h4><span class="vote-count">Votes: <%= question.total_votes %> | </span><a href="/questions/<%= question.id %>"> <%= question.title %></a></h4>
-      <span class="content"><%= question.content %></span>
-    <!--PUT THE REST HERE-->
-    </article><br>
-  <% end %>
-<% end %>
-
+<div id="index-box" class="container">
+  <div class="question-container">
+    <% if @questions %>
+      <% @questions.each do |question| %>
+        <%= erb :"/questions/_question", locals: {question: question} %>
+      <% end %>
+    <% end %>
+  </div>
 <% if session[:user_id] %>
-  <form method="get" action="/questions/new" class="inline">
+  <form id="question-button" method="get" action="/questions/new" class="inline">
       <input class="no-js-button" type="submit" value="New Question">
   </form>
+<div class="hidden" id="new-question-wrapper">
+  <%= erb :"/questions/_new" %>
+</div>
 <% end %>
 </div>
