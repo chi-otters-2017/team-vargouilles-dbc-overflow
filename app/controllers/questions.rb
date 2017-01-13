@@ -34,7 +34,6 @@ post '/questions/:id/comments' do
     commentor_id: session[:user_id],
     commentable_id: params[:id],
     commentable_type: 'Question'
-
   }
 
   comment = Comment.new(comment_info)
@@ -48,13 +47,11 @@ post '/questions/:id/comments' do
 end
 
 post '/questions/:id/votes' do
-  # raise params[:vote].inspect
   vote_info = {
     voter_id: session[:user_id],
     value: params[:vote],
     votable_id: params[:id],
     votable_type: 'Question'
-
   }
   new_vote = Vote.new(vote_info)
   if new_vote.save
@@ -66,21 +63,3 @@ post '/questions/:id/votes' do
   end
 end
 
-# post '/comments/:id/votes' do
-#   # raise params[:vote].inspect
-#   vote_info = {
-#     voter_id: session[:user_id],
-#     value: params[:vote],
-#     votable_id: params[:id],
-#     votable_type: 'Comment'
-
-#   }
-#    new_vote = Vote.new(vote_info)
-#    if new_vote.save
-#     redirect "/questions/#{params[:id]}"
-#   else
-#     @errors = new_vote.errors.full_messages
-#     @question = Question.find_by(id: params[:id])
-#     erb :'/questions/show'
-#   end
-# end
