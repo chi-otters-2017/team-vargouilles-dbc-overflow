@@ -45,14 +45,9 @@ post '/answers/:id/comments' do
     @errors = @answer.errors.full_messages
     erb :"/answers/_new"
   end
-
 end
 
 post '/answers/:id/votes' do
-  p "I've entered answers id votes post on line 52 of answers rb"
-  # => "I've entered answers id votes post on line 52 of answers rb"
-  p params.inspect
-  # => "{\"vote\"=>\"1\", \"splat\"=>[], \"captures\"=>[\"22\"], \"id\"=>\"22\"}"
   vote_info = {
     voter_id: session[:user_id],
     value: params[:vote],
@@ -61,15 +56,13 @@ post '/answers/:id/votes' do
   }
 
   @answer = Answer.find_by(id: params[:id])
-  puts "#" * 150
-  p @answer.question_id
   new_vote = Vote.new(vote_info)
   if new_vote.save
     # Need to find question_id before I can head there.
     redirect "/questions/#{@answer.question_id}"
   else
     @errors = new_vote.errors.full_messages
-    @answer = Answer.find_by(id: params[:id])
+    @question = Question.find(@answer.question_id)
     erb :'/questions/show'
   end
 end
