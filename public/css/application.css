@@ -31,3 +31,15 @@ ul {
 .font-deWalpergen {
   font-family: "de-walpergens-pica", 'Times new roman', Sans-serif;
 }
+
+.vote-button {
+  background-image: url("../images/poop_emoji.png")
+}
+
+.upvote-button {
+
+}
+
+.downvote-button {
+
+}
