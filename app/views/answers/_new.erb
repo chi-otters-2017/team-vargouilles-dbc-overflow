@@ -1,11 +1,9 @@
 <div id="create-new-answer">
   <h1>New Answer</h1>
 
-  <form action="/questions/:id/answers" method="post">
+  <form action="/questions/<%= @question.id %>/answers" method="post">
     <label for="response">Answer:</label>
     <input type="text" placeholder="My answer" name="response">
-    <input
-    <br>
-    <input type="submit" value="Submit New Answer">
+    <input type="submit" value="Submit Answer">
   </form>
 </div>
