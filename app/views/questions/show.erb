@@ -1,6 +1,6 @@
 <div id="question-wrapper">
   <h1> <%= @question.title %> </h1>
-  <p> <%= @question.content %> </p>
+  <p> Question: <%= @question.content %> </p>
 </div>
 <h3>Comments</h3>
 <div class="comments-container">
@@ -8,7 +8,7 @@
     <ul>
       <% @comments.each do |comment| %>
       <li>
-        <span class="comment"><%= comment.body%></span>
+       - <span class="comment"><%= comment.body%></span>
       </li>
       <% end %>
     </ul>
@@ -19,13 +19,13 @@
 <ul>
   <% @question.answers.each do |answer| %>
     <li>
-      <span class="answer"><%= answer.response %><br>
+      <span class="answer">Answer: <%= answer.response %><br>
         <% if answer.comments %>
-        <h5>comments</h5>
+        <h5>Comments</h5>
         <div class="answer-comments">
           <%answer.comments.each do |comment|%><br>
             <span class="comment nested">
-              <%= comment.body %>
+              - <%= comment.body %>
             </span>
           <%end%>
         </div>

@@ -1,12 +1,12 @@
 <ul class="nav-links">
 
   <li><a href="/questions">Home</a></li>
-  <li><a href="/users/#{session[:user_id]}">Profile</a></li>
+  <li><a href="/users/<%= session[:user_id] %>">Profile</a></li>
 
   <li>
     <form action="/sessions" method="post">
       <input type="hidden" name="_method" value="delete">
-      <input id="login button" type="submit">
+      <input id="login button" type="submit"value="Log Out">
     </form>
   </li>
 </ul>

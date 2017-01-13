@@ -1,5 +1,5 @@
 <div id="new-comment-form" class="container">
-    <h1>New Comment!</h1>
+    <h1>New Comment</h1>
   <% if !@commentable && @answer%>
     <% @commentable = @answer %>
   <% elsif !@commentable && @question %>
@@ -8,6 +8,6 @@
 
   <form method="post" action="/<%=@commentable.plural_model_name%>/<%=@commentable.id%>/comments">
       <textarea id="comment-content" name="body" rows="2" cols="40"></textarea>
-      <input type="submit" value="comment">
+      <input type="submit" value="Add Comment">
   </form>
 </div>
