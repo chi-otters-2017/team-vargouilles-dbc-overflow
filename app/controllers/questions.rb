@@ -56,8 +56,8 @@ post '/questions/:id/votes' do
     votable_type: 'Question'
 
   }
-   new_vote = Vote.new(vote_info)
-   if new_vote.save
+  new_vote = Vote.new(vote_info)
+  if new_vote.save
     redirect "/questions/#{params[:id]}"
   else
     @errors = new_vote.errors.full_messages
@@ -65,3 +65,22 @@ post '/questions/:id/votes' do
     erb :'/questions/show'
   end
 end
+
+# post '/comments/:id/votes' do
+#   # raise params[:vote].inspect
+#   vote_info = {
+#     voter_id: session[:user_id],
+#     value: params[:vote],
+#     votable_id: params[:id],
+#     votable_type: 'Comment'
+
+#   }
+#    new_vote = Vote.new(vote_info)
+#    if new_vote.save
+#     redirect "/questions/#{params[:id]}"
+#   else
+#     @errors = new_vote.errors.full_messages
+#     @question = Question.find_by(id: params[:id])
+#     erb :'/questions/show'
+#   end
+# end
