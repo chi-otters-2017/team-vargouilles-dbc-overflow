@@ -85,11 +85,19 @@ end
 
 namespace :db do
   desc "Drop, create, and migrate the database"
-  task :reset => [:silly, :drop, :create, :migrate, :seed]
+  task :reset => [:silly, :drop, :create, :migrate, :seed, :peace]
+
+  desc "yolo"
+  task :yolo => :reset
 
   desc "silly print"
   task :silly do
-    print "\n\n          ヽ(⌐■_■)ﾉ\n\u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \n\n🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊[__YOLO__]🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊\n"
+      print "          ヽ(⌐■_■)ﾉ\n🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊[__YOLO__]🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊\n"
+  end
+
+  desc "drop the mic"
+  task :peace do
+    print "\n             ==============\n             __         ___\n           |    |  |  |  |\n            \\__/   |__|  |\n             ==============\n             ヽ(˘ _ ˘)\n            : [__YOLO__]\n            . \n            . \n            🎤"
   end
 
   desc "Create the databases at #{DB_NAME}"
