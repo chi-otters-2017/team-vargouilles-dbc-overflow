@@ -48,6 +48,7 @@ post '/questions/:id/comments' do
 end
 
 post '/questions/:id/votes' do
+  # raise params[:vote].inspect
   vote_info = {
     voter_id: session[:user_id],
     value: params[:vote],
