@@ -18,6 +18,4 @@ post '/questions/:id/answers' do
   end
 end
 
-get '/questions/:id/comments/new' do
-  erb :"comments/_new"
-end
+
