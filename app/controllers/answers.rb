@@ -9,13 +9,12 @@ post '/questions/:id/answers' do
   @user = User.find(session[:user_id])
   @answer = Answer.new(response: params[:response], answerer_id: session[:user_id], question_id: params[:id])
   if @answer.save
-    # this doesn't work
     @votes = @answer.total_votes
     redirect "/questions/#{params[:id]}"
     if request.xhr?
       erb :"/answers/_show", layout: false
     else
-      redirect :'/questions/:id'
+      redirect :"/questions/#{params[:id]}"
     end
   else
     @errors = @answer.errors.full_messages
@@ -28,9 +27,24 @@ get '/answers/:id/comments/new' do
   erb :'/comments/_new'
 end
 
- # FIX THIS
 post '/answers/:id/comments' do
-  @answer_comment = Comment.new(commentor_id: session[:user_id, ])
+  @answer_comment = Comment.new(body: params[:body], commentor_id: session[:user_id], commentable_id: params[:id], commentable_type: "Answer")
+  if @answer_comment.save
+    @votes = @answer_comment.total_votes
+      answer_id = @answer_comment.commentable_id
+      answer = Answer.find_by(id: answer_id)
+      question_id = answer.question_id
+
+      redirect "/questions/#{question_id}"
+    if request.xhr?
+      # erb :"/answers/_show", layout: false
+    else
+
+    end
+  else
+    @errors = @answer.errors.full_messages
+    erb :"/answers/_new"
+  end
 
 end
 
