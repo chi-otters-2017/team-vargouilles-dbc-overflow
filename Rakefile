@@ -89,7 +89,7 @@ namespace :db do
 
   desc "silly print"
   task :silly do
-    print "\n\n          ヽ(⌐■_■)ﾉ\n🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊[__YOLO__]🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊\n"
+    print "\n\n          ヽ(⌐■_■)ﾉ\n\u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \u{1f4a9} \n\n🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊[__YOLO__]🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊\n"
   end
 
   desc "Create the databases at #{DB_NAME}"
