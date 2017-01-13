@@ -11,7 +11,7 @@ require 'faker'
 end
 
 
-10.times do
+20.times do
   question_info = {
   title: Faker::StarWars.vehicle,
   content: Faker::Lorem.sentence,
@@ -24,7 +24,7 @@ end
   answer_info = {
     response: Faker::StarWars.quote,
     answerer_id: (1..40).to_a.sample,
-    question_id: (1..10).to_a.sample
+    question_id: (1..20).to_a.sample
   }
   Answer.create(answer_info)
 end
@@ -33,8 +33,20 @@ end
   comment_info = {
     body: Faker::TwinPeaks.quote,
     commentor_id: (1..40).to_a.sample,
-    commentable_id: (1..10).to_a.sample,
+    commentable_id: (1..20).to_a.sample,
     commentable_type: ['Question', 'Answer'].sample
   }
   Comment.create(comment_info)
 end
+
+
+100.times do
+  vote = {
+    voter_id: (1..40).to_a.sample,
+    value: [1, -1].sample,
+    votable_type: ['Question', 'Answer', 'Comment'].sample,
+    votable_id: (1..20).to_a.sample
+  }
+  Vote.create(vote)
+end
+
