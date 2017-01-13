@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   include BCrypt
 
   has_many :authored_questions, { class_name: 'Question', foreign_key: :author_id }
-
-
+  has_many :authored_answers, { class_name: 'Answer', foreign_key: :answerer_id }
 
   def password
     @password ||= Password.new(hashed_password)
