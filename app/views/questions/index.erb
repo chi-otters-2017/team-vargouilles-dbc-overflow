@@ -2,10 +2,12 @@
 <% if @questions %>
   <% @questions.each do |question| %>
     <article class="question">
-      <h4><a href="/questions/<%= question.id %>"><%= question.title %></a></h4><br>
+
+
+      <h4><span class="vote-count">Votes: <%= question.total_votes %> | </span><a href="/questions/<%= question.id %>"> <%= question.title %></a></h4>
       <span class="content"><%= question.content %></span>
     <!--PUT THE REST HERE-->
-    </article>
+    </article><br>
   <% end %>
 <% end %>
 
