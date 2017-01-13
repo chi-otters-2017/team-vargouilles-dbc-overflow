@@ -1,16 +1,30 @@
+<!--
+  upvote button
+  vote count
+  downvote button
+ -->
+
 <article id="<%= @answer.id %>">
+  <!-- upvote button -->
+  <form method="post" action='/posts/<%= @new_post.id %>/vote' class="inline">
+    <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+  </form>
 
-<form method="post" action='/posts/<%= @new_post.id %>/vote' class="inline">
-   <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
-</form>
+  <!-- vote count -->
+  <p><span id="vote-count" ><%= @votes %></span></p>
 
- <h2><a href='/questions/<%= questions.id %>'><%= @new_post.title %></a></h2>
- <p>
+  <!-- downvote button -->
+  <form method="post" action='/posts/<%= @new_post.id %>/vote' class="inline">
+    <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+  </form>
+
+  <span><p><%= @answer.response %></p></span>
+  <span><a href='/users/<%= @user.id %>'><%= @user.name %></a></span>
+
+</article>
+
+
    <span class='points'><%= @new_post.points %></span>
    <span class='username'><%= @new_post.username %></span>
    <span class='timestamp'><%= @new_post.time_since_creation %></span>
    <span class='comment-count'><%= @new_post.comment_count %></span>
-   <a class="delete" href='/posts/<%= @new_post.id %>'></a>
- </p>
-
-</article>

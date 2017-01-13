@@ -1,0 +1,14 @@
+<!-- User Profile Page -->
+<!-- username -->
+<!-- all user questions -->
+
+<div>
+  <h1>Hello <%= @user.name %></h1>
+  <h2>Your Questions:</h2>
+  <ul>
+    <% @user.authored_questions.each do |question| %>
+      <li><a href='/questions/<%=question.id %>'><%=question.title %></a></li>
+      <br>
+    <% end %>
+  <ul>
+</div>
