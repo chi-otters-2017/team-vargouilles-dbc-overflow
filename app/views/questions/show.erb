@@ -1,5 +1,7 @@
 <div id="question-wrapper">
   <h1> <%= @question.title %> </h1>
+  <% @votable = @question %>
+  <%=erb(:'votes/_vote_buttons')%>
   <span class="vote-count">Votes: <%= @question.total_votes %></span>
   <p> Question: <%= @question.content %> </p>
 </div>
@@ -9,7 +11,11 @@
     <ul>
       <% @comments.each do |comment| %>
       <li>
-      <span class="vote-count">Votes: <%= comment.total_votes %></span>
+      <% @votable = comment %>
+      <%=erb(:'votes/_vote_buttons')%>
+      <span class="vote-count">
+       <%= comment.total_votes %>
+      </span>
        - <span class="comment"><%= comment.body%></span>
       </li>
       <% end %>
@@ -23,12 +29,16 @@
 <ul>
   <% @question.answers.each do |answer| %>
     <li>
+      <% @votable = answer %>
+      <%=erb(:'votes/_vote_buttons')%>
       <span class="vote-count">Votes: <%= answer.total_votes %></span>
       <span class="answer">Answer: <%= answer.response %><br>
         <% if answer.comments %>
         <h5>Comments</h5>
         <div class="answer-comments">
           <%answer.comments.each do |comment|%><br>
+            <% @votable = comment %>
+            <%=erb(:'votes/_vote_buttons')%>
             <span class="vote-count">Votes: <%= comment.total_votes %></span>
             <span class="comment nested">
               - <%= comment.body %>
