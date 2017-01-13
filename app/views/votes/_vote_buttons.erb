@@ -1,0 +1,11 @@
+<!-- Up Vote Button -->
+<div class= "arrow-wrapper">
+<form class="up-vote" method="post" action='/<%= @votable.plural_model_name %>/<%= @votable.id %>/votes'>
+  <button type="submit" name="vote" value="1" class="vote-button upvote-button"></button>
+</form>
+
+<!-- Down Vote Button -->
+<form class="down-vote" method="post" action='/<%= @votable.plural_model_name %>/<%= @votable.id %>/vote'>
+  <button type="submit" name="vote" value="-1" class="vote-button downvote-button"></button>
+</form>
+</div>

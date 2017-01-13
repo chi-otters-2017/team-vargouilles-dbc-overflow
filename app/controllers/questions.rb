@@ -46,3 +46,21 @@ post '/questions/:id/comments' do
     erb :'/questions/show'
   end
 end
+
+post '/questions/:id/votes' do
+  vote_info = {
+    voter_id: session[:user_id],
+    value: params[:vote],
+    votable_id: params[:id],
+    votable_type: 'Question'
+
+  }
+   new_vote = Vote.new(vote_info)
+   if new_vote.save
+    redirect "/questions/#{params[:id]}"
+  else
+    @errors = new_vote.errors.full_messages
+    @question = Question.find_by(id: params[:id])
+    erb :'/questions/show'
+  end
+end
