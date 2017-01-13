@@ -15,7 +15,6 @@ post '/questions' do
   @question = Question.new(title: params[:title], content: params[:content], author_id: session[:user_id])
   if @question.save
     if request.xhr?
-      # raise @question.inspect
       erb :"/questions/_question", layout: false, locals: {question: @question}
     else
       redirect "/questions"

@@ -10,5 +10,8 @@
   <form id="question-button" method="get" action="/questions/new" class="inline">
       <input class="no-js-button" type="submit" value="New Question">
   </form>
+<div class="hidden" id="new-question-wrapper">
+  <%= erb :"/questions/_new" %>
+</div>
 <% end %>
 </div>
