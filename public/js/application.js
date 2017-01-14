@@ -1,51 +1,46 @@
 $(document).ready(function() {
-  $("#question-button").on("submit", function(e){
-      e.preventDefault();
-      $("#question-button").addClass('hidden');
+  $("#outer").hide();
+  $("#index-box").on("click", "#question-button", function(e){
+    e.preventDefault();
+    var url = $(this).attr('action');
+    var method = $(this).attr('method');
+    $.ajax({
+      url: url,
+      type: method
+    })
 
-      var url = $(this).attr('action');
-      var method = $(this).attr('method');
-
-      $.ajax({
-        url: url,
-        type: method
-      })
-      .done(function(response) {
-        $(".container").append(response);
-      });
-      // .always(function() {
-      // });
+    .done(function(response) {
+      $("#outer").show();
+      $("#outer").html(response);
+      $('#question-button').hide();
     });
+  });
 
-    $("#index-box").on("submit", "#new-question-input", function(e){
-      e.preventDefault();
+  $('#index-box').on("submit", "#new-question-input", function(e){
+    e.preventDefault();
+    var url = $(this).attr('action');
+    var method = $(this).attr('method');
+    var data = $(this).serialize();
 
-      var $form = $("#new-question-input");
-      var url = $form.attr('action');
-      var method = $form.attr('method');
-      var data = $form.serialize();
-      debugger
+    $.ajax({
+      url: url,
+      type: method,
+      data: data
+    })
+    .done(function(response) {
+      console.log("success");
 
-      $("#new-question-form-wrapper").addClass('hidden');
-      $("#question-button").removeClass('hidden');
-
-      $.ajax({
-        url: url,
-        type: method,
-        data: data
-      })
-      .done(function(response) {
-        $(".question-container").append(response);
-        console.log(response);
-      });
-      // .fail(function() {
-      //   console.log("error");
-      // })
-     // .always(function() {
-     //    $("#new-question-input").reset();
-     //  });
+      $(".question-container").append(response);
+      $('#question-button').show();
+      $('#inner').remove();
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
     });
-
+  });
 });
 
 
