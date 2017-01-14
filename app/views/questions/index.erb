@@ -7,15 +7,15 @@
     <% end %>
   </div>
 <% if session[:user_id] %>
-  <form id="question-button" method="get" action="/questions/new" class="inline">
-      <input class="no-js-button" type="submit" value="New Question">
-  </form>
-<div id="new-question-wrapper">
-  <div id="new-question-form-wrapper" class="wrapper">
-    <div id='outer'>
-      <%= erb :"/questions/_new" %>
-    </div>
+  <div id="new-question-request-wrapper">
+    <form id="question-button" method="get" action="/questions/new" >
+        <input class="no-js-button" type="submit" value="New Question">
+    </form>
   </div>
+  <!-- <div id="new-question-form-wrapper" class="wrapper"> -->
+  <div id='new-question-form-holder' class='holder'>
+    <%= erb :"/questions/_new" %>
   </div>
+  <!-- </div> -->
 <% end %>
 </div>

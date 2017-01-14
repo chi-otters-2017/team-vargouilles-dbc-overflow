@@ -7,8 +7,17 @@ ul {
   list-style-type: none;
 }
 
+h3-4, p, span, a, input, button {
+  font-family: "de-walpergens-pica", 'Times new roman', Sans-serif;
+}
+.nav-link {
+  display:inline;
+}
+
 .font-creepster {
   font-family: 'Creepster', 'Times new roman', Sans-serif;
+  font-size: 3em;
+  letter-spacing: 0.05em;
 }
 
 .font-deWalpergen {
@@ -17,7 +26,6 @@ ul {
 
 button.vote-button {
   background: transparent;
-
   margin:0;
 
 }

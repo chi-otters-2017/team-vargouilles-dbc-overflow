@@ -1,6 +1,7 @@
 $(document).ready(function() {
-  $("#outer").hide();
-  $("#index-box").on("click", "#question-button", function(e){
+  $("#new-question-request-wrapper").removeClass('hidden')
+  $("#new-question-form-holder").hide();
+  $("#new-question-request-wrapper").on("click", "#question-button", function(e){
     e.preventDefault();
     var url = $(this).attr('action');
     var method = $(this).attr('method');
@@ -10,8 +11,8 @@ $(document).ready(function() {
     })
 
     .done(function(response) {
-      $("#outer").show();
-      $("#outer").html(response);
+      $("#new-question-form-holder").show();
+      $("#new-question-form-holder").html(response);
       $('#question-button').hide();
     });
   });
