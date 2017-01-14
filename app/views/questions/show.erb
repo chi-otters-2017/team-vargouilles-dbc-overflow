@@ -1,5 +1,9 @@
 <div id="question-wrapper">
   <h1> <%= @question.title %> </h1>
+  <% if logged_in? %>
+    <% @votable = @question %>
+    <%=erb(:'votes/_vote_buttons')%>
+  <% end %>
   <span class="vote-count">Votes: <%= @question.total_votes %></span>
   <p> Question: <%= @question.content %> </p>
 </div>
@@ -9,39 +13,64 @@
     <ul>
       <% @comments.each do |comment| %>
       <li>
-      <span class="vote-count">Votes: <%= comment.total_votes %></span>
-       - <span class="comment"><%= comment.body%></span>
+      <% if logged_in? %>
+        <% @votable = comment %>
+        <%=erb(:'votes/_vote_buttons')%>
+      <% end %>
+      <span class="vote-count">
+       <%= comment.total_votes %>
+      </span>
+       - <span class="comment">Comment: <%= comment.body%></span>
       </li>
       <% end %>
     </ul>
   <% end %><br>
-  <%=erb(:'/comments/_new') %>
-</div>
 
-<div><%=erb(:'/answers/_new') %></div>
+
+  <div id="new-comment-form">
+    <% if logged_in? %>
+      <%=erb(:'comments/_new') %>
+    <% end %>
+  </div>
+</div>
+<div id="create-new-answer">
+  <% if logged_in? %>
+    <%=erb(:'answers/_new') %>
+  <% end %>
+</div>
 
 <ul>
   <% @question.answers.each do |answer| %>
     <li>
+      <% if logged_in? %>
+        <% @votable = answer %>
+        <%=erb(:'votes/_vote_buttons')%>
+      <% end %>
       <span class="vote-count">Votes: <%= answer.total_votes %></span>
       <span class="answer">Answer: <%= answer.response %><br>
         <% if answer.comments %>
-        <h5>Comments</h5>
         <div class="answer-comments">
+          <h5>Comments</h5>
           <%answer.comments.each do |comment|%><br>
-            <span class="vote-count">Votes: <%= comment.total_votes %></span>
+            <% if logged_in? %>
+              <% @votable = comment %>
+              <%=erb(:'votes/_vote_buttons')%>
+            <% end %>
+            <span class="vote-count">
+              Votes: <%= comment.total_votes %>
+            </span>
             <span class="comment nested">
-              - <%= comment.body %>
+              Answer Comments: <%= comment.body %>
             </span>
           <%end%>
         </div>
         <% end %>
-
-      <form method="get" action="/answers/<%=answer.id %>/comments/new" class="comment-button">
-        <input class="no-js-button" type="submit" value="comment">
-      </form>
+      <% if logged_in? %>
+        <form method="get" action="/answers/<%=answer.id %>/comments/new" class="comment-button">
+          <input class="no-js-button" type="submit" value="comment">
+        </form>
+      <% end %>
       <br>
-
     </li>
   <% end %>
 </ul>

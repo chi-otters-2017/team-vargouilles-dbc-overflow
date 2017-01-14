@@ -1,16 +1,19 @@
 <article id="<%= @answer.id %>">
   <!-- upvote button -->
-  <form method="post" action='/posts/<%= @new_post.id %>/vote' class="inline">
-    <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
-  </form>
-
+  <% if logged_in? %>
+    <form method="post" action='/posts/<%= @new_post.id %>/vote' class="inline">
+      <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+    </form>
+  <% end %>
   <!-- vote count FIX THIS -->
   <p><span id="vote-count" ><%= @votes %></span></p>
 
   <!-- downvote button -->
-  <form method="post" action='/posts/<%= @new_post.id %>/vote' class="inline">
-    <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
-  </form>
+  <% if logged_in? %>
+    <form method="post" action='/posts/<%= @new_post.id %>/vote' class="inline">
+      <button type="submit" name="submit_param" value="submit_value" class="fa fa-sort-desc vote-button upvote-button"></button>
+    </form>
+  <% end %>
 
   <span><p><%= @answer.response %></p></span>
   <span><a href='/users/<%= @user.id %>'><%= @user.name %></a></span>
