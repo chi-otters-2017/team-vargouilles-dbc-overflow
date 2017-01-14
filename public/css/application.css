@@ -7,6 +7,27 @@ ul {
   list-style-type: none;
 }
 
+.font-creepster {
+  font-family: 'Creepster', 'Times new roman', Sans-serif;
+}
+
+.font-deWalpergen {
+  font-family: "de-walpergens-pica", 'Times new roman', Sans-serif;
+}
+
+button.vote-button {
+  background: transparent;
+
+  margin:0;
+
+}
+
+.arrow-wrapper{
+  border: 2px dashed black;
+  max-width: 2em;
+  margin: 0;
+}
+
 #title{
   border-style: solid;
   margin: 20px 20px 20px 20px;
@@ -24,10 +45,20 @@ ul {
   background-color: #2e7d32;
 }
 
-.font-creepster {
-  font-family: 'Creepster', 'Times new roman', Sans-serif;
+
+.vote-button {
+  padding-right: 0.25em;
+  padding-left: 0.25em;
+  height: 1.2em;
 }
 
-.font-deWalpergen {
-  font-family: "de-walpergens-pica", 'Times new roman', Sans-serif;
+.translate-180 {
+  -webkit-transform: rotate(180deg);
 }
+
+.poop-button {
+  max-height: 10px;
+  max-width: 8px;
+  margin-bottom: 0.3em;
+}
+
