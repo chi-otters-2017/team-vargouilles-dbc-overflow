@@ -25,11 +25,6 @@ post '/questions' do
   end
 end
 
-get '/questions/:id/comments/new' do
-  @commentable = Question.find(params[:id])
-  erb :"comments/_new"
-end
-
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @comments = @question.comments

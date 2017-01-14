@@ -10,26 +10,30 @@
 <h3>Comments</h3>
 <div class="comments-container">
   <%if @comments%>
-    <ul>
+    <ul id ="comment-list">
       <% @comments.each do |comment| %>
-      <li>
-      <% if logged_in? %>
+        <%=erb(:'comments/_show', {}) %>
+<!--       <li>
+      <%# if logged_in? %>
         <% @votable = comment %>
-        <%=erb(:'votes/_vote_buttons')%>
-      <% end %>
+        <%#=erb(:'votes/_vote_buttons')%>
+      <% #end %>
       <span class="vote-count">
        <%= comment.total_votes %>
       </span>
        - <span class="comment">Comment: <%= comment.body%></span>
-      </li>
+      </li> -->
       <% end %>
     </ul>
   <% end %><br>
 
 
-  <div id="new-comment-form">
+  <div id="new-comment-form-wrapper">
     <% if logged_in? %>
-      <%=erb(:'comments/_new') %>
+    <form  method='get' action="/questions/<%=@question.id %>/comments/new" class="reveal-button">
+      <%#=erb(:'comments/_new') %>
+      <input id="comment-button" class="no-js-button" type="submit" value="comment">
+    </form>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,14 @@
+<li>
+  <table class="comment-block">
+    <tr class="comment-row">
+      <td class="vote-cell-wrapper">
+        <%@votable = comment%>
+        <%=erb(:'votes/_show') %>
+      </td>
+      <td class="comment-cell-wrapper">
+        <span class="comment"><%=comment.commentor%><%= comment.body%>
+        </span>
+      </td>
+    </tr>
+  </table>
+</li>

@@ -1,0 +1,13 @@
+<div class='arrow-wrapper'>
+<% if logged_in? %>
+  <%= erb(:'votes/_up_vote_button')%>
+    <span class="vote-count">
+     <%= @votable.total_votes %>
+    </span>
+  <%= erb(:'votes/_down_vote_button')%>
+<% else %>
+    <span class="vote-count">
+     <%= @votable.total_votes %>
+    </span>
+<% end %>
+</div>

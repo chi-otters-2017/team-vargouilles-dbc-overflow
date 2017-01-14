@@ -1,8 +1,5 @@
 # We no longer need this because the partial for adding a new answer has been added to the question page
 
-# get '/questions/:id/answers/new' do
-#   erb :"answers/_new"
-# end
 
 post '/questions/:id/answers' do
   @question = Question.find(params[:id])
@@ -20,11 +17,6 @@ post '/questions/:id/answers' do
     @errors = @answer.errors.full_messages
     erb :"/answers/_new"
   end
-end
-
-get '/answers/:id/comments/new' do
-  @commentable = Answer.find(params[:id])
-  erb :'/comments/_new'
 end
 
 post '/answers/:id/comments' do
