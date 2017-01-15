@@ -1,3 +1,10 @@
+/*Make headers deWalpergen and p tags Indie flower!*/
+
+body{
+  width:87%;
+  margin: 0 auto;
+}
+
 div {
   display: block;
   margin: 0 auto;
@@ -7,19 +14,60 @@ ul {
   list-style-type: none;
 }
 
-.font-creepster {
-  font-family: 'Creepster', 'Times new roman', Sans-serif;
+h2,h3,h4,h5,h6{
+  font-family: "de-walpergens-pica", "Times new roman", Sans-serif;
 }
 
+p, span, a, input, button {
+  font-family: "Indie Flower", "Times new roman", Cursive;
+}
+
+a {
+  color: #2e7d32;
+}
+
+.nav-link {
+  display:inline;
+}
+
+.font-creepster {
+  font-family: "Creepster", "Times new roman", Sans-serif;
+  font-size: 3em;
+  letter-spacing: 0.05em;
+  color: lemonchiffon;
+  padding-left: 3.8em;
+}
+
+#question-wrapper{
+  border: 4px solid darkgreen;
+  padding: 1em;
+}
+
+
 .font-deWalpergen {
-  font-family: "de-walpergens-pica", 'Times new roman', Sans-serif;
+  font-family: "de-walpergens-pica", "Times new roman", Sans-serif;
+}
+
+.font-indieflower{
+  font-family: "Indie Flower", "Arial", Sans-serif;
+
 }
 
 button.vote-button {
   background: transparent;
-
   margin:0;
 
+}
+
+.vote-cell-wrapper{
+  padding-right: 1em;
+  padding-top: 0;
+  padding-bottom:0;
+
+}
+
+.vote-count{
+  padding-left:0.3em;
 }
 
 .arrow-wrapper{
@@ -31,6 +79,7 @@ button.vote-button {
 #title{
   border-style: solid;
   margin: 20px 20px 20px 20px;
+  background-color: #5e35b1;
 }
 
 .hidden {

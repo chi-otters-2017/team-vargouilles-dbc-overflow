@@ -1,9 +1,9 @@
-<ul class="nav-links">
+<ul class="nav-list">
 
-  <li><a href="/questions">Home</a></li>
-  <li><a href="/users/<%= session[:user_id] %>">Profile</a></li>
+  <li class="nav-link"><a href="/questions">Home</a></li>
+  <li class="nav-link"><a href="/users/<%= session[:user_id] %>">Profile</a></li>
 
-  <li>
+  <li class="nav-link">
     <form action="/sessions" method="post">
       <input type="hidden" name="_method" value="delete">
       <input id="login button" type="submit"value="Log Out">

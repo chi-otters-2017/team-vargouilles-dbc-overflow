@@ -1,0 +1,21 @@
+<li>
+  <table class="comment-block">
+    <tr class="comment-row">
+      <td class="vote-cell-wrapper">
+      <%if logged_in?%>
+        <%@votable = comment%>
+        <%=erb(:'votes/_show') %>
+      <%else%>
+        <span class="vote-count">
+        <%= @votable.total_votes %>
+        </span>
+      <%end%>
+      </td>
+      <td class="comment-cell-wrapper">
+        <span class="comment">
+        <%= comment.body%> -<a href="/users/<%=comment.commentor_id%>"><%=comment.commentor.name%></a>
+        </span>
+      </td>
+    </tr>
+  </table>
+</li>

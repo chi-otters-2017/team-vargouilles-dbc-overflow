@@ -1,0 +1,14 @@
+<div class='arrow-wrapper'>
+  <!-- note need to declare @votable = (whatever you want the votes for) before render -->
+  <% if logged_in? %>
+    <%= erb(:'votes/_up_vote_button')%>
+      <span class="vote-count">
+       <%= @votable.total_votes %>
+      </span>
+    <%= erb(:'votes/_down_vote_button')%>
+  <% else %>
+      <span class="vote-count">
+       <%= @votable.total_votes %>
+      </span>
+  <% end %>
+</div>

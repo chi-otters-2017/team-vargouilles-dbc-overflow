@@ -1,3 +1,20 @@
+get '/questions/:id/comments/new' do
+  @commentable = Question.find(params[:id])
+  if request.xhr?
+    erb :"comments/_new", layout: false
+  else
+    erb :"comments/_new"
+  end
+end
+
+get '/answers/:id/comments/new' do
+  @commentable = Answer.find(params[:id])
+  if request.xhr?
+    erb :"comments/_new", layout: false
+  else
+    erb :"comments/_new"
+  end
+end
 
 post '/comments/:id/votes' do
   vote_info = {

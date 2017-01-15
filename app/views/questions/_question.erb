@@ -1,4 +1,4 @@
 <article class="question">
-    <h4><span class="vote-count">Votes: <%= question.total_votes %> | </span><a href="/questions/<%= question.id %>"> <%= question.title %></a></h4>
+    <h4><span class="vote-count"><%= question.total_votes %> | </span><a href="/questions/<%= question.id %>"> <%= question.title %></a></h4>
     <span class="content"><%= question.content %></span>
 </article><br>
