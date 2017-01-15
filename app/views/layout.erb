@@ -23,8 +23,21 @@
   <header role="banner" id="main-header">
   <!-- LOGO GOES HERE! -->
   <div id="title">
-    <h1 class="font-creepster">Spooky Overflow</h1>
+    <table>
+      <tr>
+        <td>
+          <h1 id="spooky-overflow" class="font-creepster pd-l-3_8em">Spooky Overflow</h1>
+        </td>
+        <td >
+          <img id='ghost-logo' class="hidden pd-l-3_8em" src="/images/ghost-300px.png" alt="Ghost by arcdroid">
+        </td>
+        <td >
+          <h1 id="boo" class="font-creepster hidden">BOO!</h1>
+        </td>
+      </tr>
+    </table>
   </div>
+
   </header>
 
   <div id="error-holder">
@@ -40,4 +53,5 @@
   <%= yield %>
   </div>
 </body>
+<footer>ghost image by arcdroid source:<a href="https://openclipart.org/detail/164221/ghost">here</a></footer>
 </html>

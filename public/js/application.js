@@ -5,8 +5,10 @@ $(document).ready(function() {
   $("#new-question-request-wrapper").removeClass('hidden')
   $("#new-question-form-holder").hide();
 
-  $(".font-creepster").on("click", function(e){
+  $("#spooky-overflow").on("click", function(e){
     e.preventDefault();
+    $("#ghost-logo").toggleClass('hidden');
+    $("#boo").toggleClass('hidden');
     $(this).toggleClass('spooky');
 
 
