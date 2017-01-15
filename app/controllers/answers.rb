@@ -3,7 +3,6 @@
 
 post '/questions/:id/answers' do
   @question = Question.find(params[:id])
-  @user = User.find(session[:user_id])
   @answer = Answer.new(response: params[:response], answerer_id: session[:user_id], question_id: params[:id])
   if @answer.save
     @votes = @answer.total_votes

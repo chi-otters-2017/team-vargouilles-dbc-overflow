@@ -1,9 +1,9 @@
 <div id="question-page-container">
   <div id="question-wrapper">
-    <h2> <%= @question.title %> </h2>
+    <h2 class="question-title-header"> <%= @question.title %> </h2>
     <table>
       <tr role="header" id="question-holder-row">
-      <td class="question-votes-cell">
+      <td class="vote-cell-wrapper">
     <% if logged_in? %>
       <% @votable = @question %>
       <%=erb(:'votes/_show')%>
@@ -14,7 +14,7 @@
     <% end %>
       </td>
       <td class="question-body-cell"> 
-        <p> Question: <%= @question.content %> </p>
+        <p><%= @question.content %> </p>
       </td> 
     </tr>
     </table>
@@ -31,11 +31,11 @@
     <% end %><br>
 
 
-    <div class="new-comment-form-wrapper">
+    <div class="new-comment-form-holder">
       <% if logged_in? %>
-      <form  method='get' action="/questions/<%=@question.id %>/comments/new" class="reveal-button">
+      <form  method='get' action="/questions/<%=@question.id %>/comments/new" class="reveal-comment-form">
         <%#=erb(:'comments/_new') %>
-        <input id="comment-button" class="no-js-button" type="submit" value="comment">
+        <input class="no-js-button reveal-comment-button" type="submit" value="comment">
       </form>
       <% end %>
     </div>
@@ -64,11 +64,11 @@
               </ul>
             <% end %>
 
-            <div class="new-comment-form-wrapper">
+            <div class="new-comment-form-holder">
               <% if logged_in? %>
-              <form  method='get' action="/answers/<%=answer.id %>/comments/new" class="reveal-button">
+              <form  method='get' action="/answers/<%=answer.id %>/comments/new" class="reveal-comment-form">
                 <%#=erb(:'comments/_new') %>
-                <input id="comment-button" class="no-js-button" type="submit" value="comment">
+                <input class="reveal-comment-button no-js-button" type="submit" value="comment">
               </form>
               <% end %>
             </div><br>

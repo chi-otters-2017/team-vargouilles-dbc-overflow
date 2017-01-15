@@ -17,8 +17,9 @@ $(document).ready(function() {
     });
   });
 
-  $('#index-box').on("submit", "#new-question-input", function(e){
+  $('#new-question-form-holder').on("submit", "#new-question-input", function(e){
     e.preventDefault();
+
     var url = $(this).attr('action');
     var method = $(this).attr('method');
     var data = $(this).serialize();
@@ -33,7 +34,7 @@ $(document).ready(function() {
 
       $(".question-container").append(response);
       $('#question-button').show();
-      $('#inner').remove();
+      $('#new-question-form-wrapper').remove();
     })
     .fail(function() {
       console.log("error");
@@ -43,7 +44,7 @@ $(document).ready(function() {
     });
   });
 
-  $("#new-comment-form-wrapper").on("click", "#reveal-comment-button", function(e){
+  $(".new-comment-form-wrapper").on("click", ".reveal-comment-button", function(e){
     e.preventDefault();
     var $form = $(this.closest("form"));
     var url = $form.attr('action');
@@ -57,7 +58,7 @@ $(document).ready(function() {
     .done(function(response) {
       $form.addClass('hidden');
       // debugger
-      $("#new-comment-form-wrapper").html(response);
+      $(".new-comment-form-holder").html(response);
       console.log("success");
     });
     // .fail(function() {
@@ -68,7 +69,7 @@ $(document).ready(function() {
     // });
   });
 
-  $("#new-comment-form-wrapper").on("click", "#submit-comment-button", function(e){
+  $(".new-comment-form-wrapper").on("click", ".submit-comment-button", function(e){
     e.preventDefault();
     var $form = $(this.closest("form"));
     var url = $form.attr('action');

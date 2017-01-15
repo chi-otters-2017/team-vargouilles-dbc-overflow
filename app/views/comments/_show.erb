@@ -13,8 +13,7 @@
       </td>
       <td class="comment-cell-wrapper">
         <span class="comment">
-        <p><%= comment.body%><p>
-        <a href="/users/<%=comment.commentor_id%>"><%=comment.commentor.name%></a>
+        <%= comment.body%> -<a href="/users/<%=comment.commentor_id%>"><%=comment.commentor.name%></a>
         </span>
       </td>
     </tr>
