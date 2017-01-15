@@ -1,13 +1,44 @@
 get '/questions' do
   @questions = Question.all
-  erb :'/questions/index'
+  erb :'/questions/index', locals: {:'sort_type' => "Top"}
+end
+
+get '/questions/sort/votes' do
+  @questions = Question.all.sort_by{|question| question.total_votes}.reverse
+  if request.xhr?
+  erb :'/questions/index', layout: false, locals: {:'sort_type' => "Top"}
+  else
+  erb :'/questions/index', locals: {:'sort_type' => "Top"}
+  end
+end
+
+get '/questions/sort/recent' do
+  @questions = Question.all.sort_by{|question| question.created_at}.reverse
+  if request.xhr?
+  erb :'/questions/index', layout: false, locals: {:'sort_type' => "Most Recent"}
+  else
+  erb :'/questions/index', locals: {:'sort_type' => "Most Recent"}
+  end
+end
+
+get '/questions/sort/hot' do
+  @questions = Question.all.sort_by{|question| question.updated_at}.reverse
+  if request.xhr?
+  erb :'/questions/index', layout: false, locals: {:'sort_type' => "Trending"}
+  else
+  erb :'/questions/index', locals: {:'sort_type' => "Trending"}
+  end
 end
 
 get '/questions/new' do
-  if request.xhr?
-    erb :'/questions/_new', layout: false
+  unless logged_in?
+    erb :'404'
   else
-    erb :'questions/_new'
+    if request.xhr?
+      erb :'/questions/_new', layout: false
+    else
+      erb :'questions/_new'
+    end
   end
 end
 
@@ -26,9 +57,13 @@ post '/questions' do
 end
 
 get '/questions/:id' do
+  unless logged_in?
+    erb :'404'
+  else
   @question = Question.find(params[:id])
   @comments = @question.comments
   erb :'/questions/show'
+  end
 end
 
 post '/questions/:id/comments' do
@@ -41,7 +76,12 @@ post '/questions/:id/comments' do
 
   comment = Comment.new(comment_info)
   if comment.save
-    redirect "/questions/#{params[:id]}"
+    if request.xhr?
+      erb :'comments/_show', layout: false, locals: {comment: comment}
+    else
+      redirect "/questions/#{params[:id]}"
+    end
+
   else
     @errors = comment.errors.full_messages
     @question = Question.find_by(id: params[:id])

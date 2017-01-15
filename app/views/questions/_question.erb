@@ -1,4 +1,20 @@
-<article class="question">
-    <h4><span class="vote-count"><%= question.total_votes %> | </span><a href="/questions/<%= question.id %>"> <%= question.title %></a></h4>
-    <span class="content"><%= question.content %></span>
-</article><br>
+<table class="question-card">
+  <tr class="question-card-row">
+    <td class="vote-count question-card-mini-cell">
+      <div class="mini-cell-count-wrapper"><span class="mini-cell-count"><%= question.total_votes %></span></div>
+      <div><span class="mini-cell-label">votes</span></div>
+    </td>
+    <td class="answer-count question-card-mini-cell">
+      <div class="mini-cell-count-wrapper"><span class="mini-cell-count"><%= question.answer_count %></span></div>
+      <div><span class="mini-cell-label">answers</span></div>
+    </td>
+    <td class="question-count question-card-mini-cell">
+      <div class="mini-cell-count-wrapper"><span class="mini-cell-count"><%= question.comment_count %></span></div>
+      <div><span class="mini-cell-label">comments</span></div>
+    </td>
+    <td class="question-card-cell">
+      <a class="question-title" href="/questions/<%= question.id %>"><%= question.title %></a>
+    </td>
+  </tr>
+  <span class="content hidden"><%= question.content %></span>
+</table><br>

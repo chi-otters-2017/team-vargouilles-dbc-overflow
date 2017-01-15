@@ -1,4 +1,28 @@
 <div id="index-box" class="container">
+  <% if session[:user_id] %>
+  <div id="new-question-request-wrapper">
+    <form id="question-button" method="get" action="/questions/new" >
+        <input class="no-js-button brd-rad-25 bg-amber-light4" type="submit" value="New Question">
+    </form>
+  </div>
+  <div id='new-question-form-holder' class='holder'>
+    <%= erb :"/questions/_new" %>
+  </div>
+<% end %>
+  <table>
+    <tr class="sort-option-bar">
+      <td class="current-sort-type tab-header">
+      <h4 id="sort-title"><%=sort_type%> Questions</h4>
+      </td>
+      <td>
+      <div class="tab-holder">
+        <a class="sort-tab active" href="/questions/sort/votes">Most Votes</a>
+        <a class="sort-tab tab-header" href="/questions/sort/recent">New</a>
+        <a class="sort-tab tab-header" href="/questions/sort/hot">Trending</a>
+      </div>
+      </td>
+    </tr>
+  </table>
   <div class="question-container">
     <% if @questions %>
       <% @questions.each do |question| %>
@@ -6,16 +30,4 @@
       <% end %>
     <% end %>
   </div>
-<% if session[:user_id] %>
-  <div id="new-question-request-wrapper">
-    <form id="question-button" method="get" action="/questions/new" >
-        <input class="no-js-button" type="submit" value="New Question">
-    </form>
-  </div>
-  <!-- <div id="new-question-form-wrapper" class="wrapper"> -->
-  <div id='new-question-form-holder' class='holder'>
-    <%= erb :"/questions/_new" %>
-  </div>
-  <!-- </div> -->
-<% end %>
 </div>

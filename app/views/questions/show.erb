@@ -13,9 +13,9 @@
       </span>
     <% end %>
       </td>
-      <td class="question-body-cell"> 
+      <td class="question-body-cell">
         <p><%= @question.content %> </p>
-      </td> 
+      </td>
     </tr>
     </table>
   </div>
@@ -23,7 +23,7 @@
   <div class="comments-container">
     <h5>Comments</h5>
     <%if @comments%>
-      <ul id ="question-<%=@question.id%>-comment-list">
+      <ul id ="question-<%=@question.id%>-comment-list" class="comment-section">
         <% @comments.each do |comment| %>
           <%=erb(:'comments/_show', locals: {comment: comment}) %>
         <% end %>
@@ -34,8 +34,9 @@
     <div class="new-comment-form-holder">
       <% if logged_in? %>
       <form  method='get' action="/questions/<%=@question.id %>/comments/new" class="reveal-comment-form">
-        <%#=erb(:'comments/_new') %>
-        <input class="no-js-button reveal-comment-button" type="submit" value="comment">
+
+        <a class="js hidden" href="/comments/new">new comment</a>
+        <input class="no-js reveal-comment-button brd-rad-25 bg-amber-light4" type="submit" value="comment">
       </form>
       <% end %>
     </div>
@@ -57,7 +58,7 @@
           <div class="comments-container">
             <h5>Comments</h5>
             <%if answer.comments%>
-              <ul id ="answer-<%=answer.id%>-comment-list">
+              <ul id ="answer-<%=answer.id%>-comment-list" class="comment-section">
                 <% answer.comments.each do |comment| %>
                   <%=erb(:'comments/_show', locals: {comment: comment}) %>
                 <% end %>
@@ -67,8 +68,9 @@
             <div class="new-comment-form-holder">
               <% if logged_in? %>
               <form  method='get' action="/answers/<%=answer.id %>/comments/new" class="reveal-comment-form">
-                <%#=erb(:'comments/_new') %>
-                <input class="reveal-comment-button no-js-button" type="submit" value="comment">
+
+                <a class="js hidden" href="/comments/new">new comment</a>
+                <input class="reveal-comment-button no-js brd-rad-25 bg-amber-light4" type="submit" value="comment">
               </form>
               <% end %>
             </div><br>

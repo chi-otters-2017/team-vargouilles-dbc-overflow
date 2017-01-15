@@ -3,6 +3,7 @@
 body{
   width:87%;
   margin: 0 auto;
+  background: linear-gradient(1deg, beige, navy, black);
 }
 
 div {
@@ -26,8 +27,14 @@ a {
   color: #2e7d32;
 }
 
+#main-container{
+  background-color: #fffde7;
+  border-radius: 25px;
+}
+
 .nav-link {
-  display:inline;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .font-creepster {
@@ -38,8 +45,49 @@ a {
   padding-left: 3.8em;
 }
 
+#sort-title {
+  font-size: 1.5em;
+  padding-right: 15em;
+  margin-bottom: 0;
+}
+
+.tab-holder{
+  border-collapse: collapse;
+}
+
+.tab-header{
+  border-bottom: 0.025em solid #2e7d32;
+  border-collapse: collapse;
+
+}
+
+.sort-tab{
+  text-decoration: none;
+  padding-bottom: 1.15em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-collapse: inherit;
+}
+
+.active{
+border-left: 0.025em solid #2e7d32;
+border-top: 0.025em solid #2e7d32;
+border-right: 0.025em solid #2e7d32;
+border-collapse: inherit;
+}
+
+#question-button{
+  padding: 1em;
+  border-radius: 25px;
+}
+
+
 #question-wrapper{
   border: 4px solid darkgreen;
+  padding: 1em;
+}
+
+#question-page-container{
   padding: 1em;
 }
 
@@ -78,12 +126,40 @@ button.vote-button {
 
 #title{
   border-style: solid;
-  margin: 20px 20px 20px 20px;
+  margin: 5px 20px 5px 20px;
   background-color: #5e35b1;
+}
+
+.question-card-row{
+  border-bottom: 0.025em solid #2e7d32;
+
+}
+.question-card-cell{
+  padding-left:1em;
+  width:33em;
+}
+
+.question-card-mini-cell{
+  width: 4.5em;
+}
+
+.mini-cell-count{
+  padding-left: 1em;
+}
+
+
+a.question-title{
+  font-size: 2.75em;
+  text-decoration: none;
 }
 
 .hidden {
   display: none;
+}
+
+
+.brd-rad-25{
+  border-radius: 25px;
 }
 
 .bg-deep-purpl {
@@ -92,6 +168,10 @@ button.vote-button {
 
 .bg-darken-green {
   background-color: #2e7d32;
+}
+
+.bg-amber-light4{
+  background-color: #ffecb3;
 }
 
 
@@ -111,3 +191,11 @@ button.vote-button {
   margin-bottom: 0.3em;
 }
 
+.comment-section {
+  border-top: 0.025em solid #2e7d32;
+  border-bottom: 0.025em solid #2e7d32;
+  border-radius: 15px;
+}
+.spooky{
+  font-size: 3.25em;
+}

@@ -1,12 +1,14 @@
-<ul class="nav-list">
-
-  <li class="nav-link"><a href="/questions">Home</a></li>
-  <li class="nav-link"><a href="/users/<%= session[:user_id] %>">Profile</a></li>
-
-  <li class="nav-link">
+<table class="nav-wrapper">
+<tr class="nav-list">
+  <td class="nav-link"><a id="" href="/questions">Home</a></td>
+  <td class="nav-link"><a href="/users/<%= session[:user_id] %>">Profile</a></td>
+  <td class="nav-link js hidden"><form action="/sessions" method="post">
+      <input type="hidden" name="_method" value="delete"><a id="logout-link"  href="/sessions">Logout</a></form></td>
+  <td id="logout-form-wrapper" class="nav-link no-js">
     <form action="/sessions" method="post">
       <input type="hidden" name="_method" value="delete">
-      <input id="login button" type="submit"value="Log Out">
+      <input id="login button" class="brd-rad-25 bg-amber-light4" type="submit" value="Log Out">
     </form>
-  </li>
-</ul>
+  </td>
+</tr>
+</table>

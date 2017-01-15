@@ -15,4 +15,15 @@ class Question < ActiveRecord::Base
 #=> returns vote count
 # comments
 #=> returns owned comments
+  def vote_count
+    self.votes.count
+  end
+
+  def comment_count
+    self.comments.count
+  end
+
+  def answer_count
+    self.answers.count
+  end
 end
