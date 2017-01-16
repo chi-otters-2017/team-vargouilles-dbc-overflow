@@ -1,3 +1,7 @@
+get '/sessions' do
+  erb(:'users/_login-form')
+end
+
 post '/sessions' do
   login_info = params[:login]
   @user = User.find_by(:email => login_info[:email])

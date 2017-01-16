@@ -1,3 +1,28 @@
+get '/questions/:id/comments/new' do
+  unless logged_in?
+    erb :'404'
+  else
+    @commentable = Question.find(params[:id])
+    if request.xhr?
+      erb :"comments/_new", layout: false
+    else
+      erb :"comments/_new"
+    end
+  end
+end
+
+get '/answers/:id/comments/new' do
+  unless logged_in?
+    erb :'404'
+  else
+    @commentable = Answer.find(params[:id])
+    if request.xhr?
+      erb :"comments/_new", layout: false
+    else
+      erb :"comments/_new"
+    end
+  end
+end
 
 post '/comments/:id/votes' do
   vote_info = {

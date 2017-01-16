@@ -1,5 +1,5 @@
-<div class="form-wrapper">
-  <h1>New Comment</h1>
+<div id="new-comment-form-wrapper">
+  <h3>New Comment</h3>
 
   <% if !@commentable && @answer%>
     <% @commentable = @answer %>
@@ -8,7 +8,7 @@
   <% end %>
 
   <form method="post" action="/<%=@commentable.plural_model_name%>/<%=@commentable.id%>/comments">
-    <textarea id="comment-content" name="body" rows="2" cols="40"></textarea>
-    <input type="submit" value="Add Comment">
+    <textarea class="comment-field" name="body" rows="2" cols="40"></textarea>
+    <input class="submit-comment-button brd-rad-25 bg-amber-light4" type="submit" value="Add Comment">
   </form>
 </div>

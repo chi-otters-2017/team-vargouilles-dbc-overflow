@@ -1,0 +1,24 @@
+  <!-- note need to declare @votable = (whatever you want the votes for) before render -->
+  <%if @votable.model_name == "Comment"%>
+  <table>
+    <tr class="comment-vote-row-holder">
+    <td class="comment-vote-cell"><span class="vote-count"><%= @votable.total_votes %><span></span></td>
+    <td class="comment-vote-cell"><%= erb(:'votes/_up_vote_button')%></td>
+    <td class="comment-vote-cell"><%= erb(:'votes/_down_vote_button')%></td>
+    </tr>
+  </table>
+  <%else%>
+<div class='arrow-wrapper'>
+  <% if logged_in? %>
+    <%= erb(:'votes/_up_vote_button')%>
+      <span class="vote-count">
+       <%= @votable.total_votes %>
+      </span>
+    <%= erb(:'votes/_down_vote_button')%>
+  <% else %>
+      <span class="vote-count">
+       <%= @votable.total_votes %>
+      </span>
+  <% end %>
+</div>
+  <% end %>

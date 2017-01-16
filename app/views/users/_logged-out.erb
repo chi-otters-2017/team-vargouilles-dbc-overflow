@@ -1,11 +1,13 @@
-<ul class="nav-links">
-  <li><a href="/questions">Home</a></li>
-  <li><a href="/users/new">Register</a></li>
-  <li>
+<table class="nav-wrapper">
+<tr class="nav-list">
+  <td class="nav-link"><a href="/questions">Home</a></td>
+  <td class="nav-link"><a href="/users/new">Register</a></td>
+  <td class="nav-link js hidden"><a id="login-link" href="/sessions">Login</a></td>
+  <td id="login-form-wrapper" class="nav-link no-js">
     <form action="/sessions" method="post">
       <input type="text" name="login[email]" placeholder="Email">
       <input type="password" name="login[password]">
-      <input id="login button" type="submit" value="Login">
+      <input id="login button" class="brd-rad-25 bg-amber-light4" type="submit" value="Login">
     </form>
-  </li>
-</ul>
+  </td>
+</table>

@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
   <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
   <link rel="stylesheet" href="/css/application.css">
-
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
-<script src='http://use.edgefonts.net/creepster.js'></script>
-<script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+  <!-- <script src='http://use.edgefonts.net/creepster.js'></script> -->
+  <script src='http://use.edgefonts.net/de-walpergens-pica.js'></script>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Creepster" rel="stylesheet">
   <title>Spooky Overflow</title>
 </head>
 
 <body>
-  <header role="banner" id="main-header" class="">
-  <div id="title">
-    <h1 class="font-deWalpergen">Spooky Overflow</h1>
-  </div>
-    <nav class="">
+    <nav id="nav-holder">
   <% if logged_in? %>
     <%=erb(:'./users/_logged-in') %>
   <% else %>
     <%=erb(:'./users/_logged-out') %>
   <% end %>
     </nav>
+  <header role="banner" id="main-header">
+  <!-- LOGO GOES HERE! -->
+  <div id="title">
+    <table>
+      <tr>
+        <td>
+          <h1 id="spooky-overflow" class="font-creepster pd-l-3_8em">Spooky Overflow</h1>
+        </td>
+        <td >
+          <img id='ghost-logo' class="hidden pd-l-3_8em" src="/images/ghost-300px.png" alt="Ghost by arcdroid">
+        </td>
+        <td >
+          <h1 id="boo" class="font-creepster hidden">BOO!</h1>
+        </td>
+      </tr>
+    </table>
+  </div>
+
   </header>
-    <ul>
-  <% if @errors %>
-    <% @errors.each do |error| %>
-        <li><%= error %></li>
-    <% end %>
-   <% end %>
-  </ul>
+
+  <div id="error-holder">
+    <ul id="error-list">
+    <% if @errors %>
+      <% @errors.each do |error| %>
+          <li class="error"><%= error %></li>
+      <% end %>
+     <% end %>
+    </ul>
+  </div>
+  <div id="main-container">
   <%= yield %>
+  </div>
 </body>
+<footer>ghost image by arcdroid source:<a href="https://openclipart.org/detail/164221/ghost">here</a></footer>
 </html>
